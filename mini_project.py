@@ -57,5 +57,62 @@ while loops, for loops, lists, random, and turtle graphics.
 ==============================================================================
 Build your game below. Delete this line and start coding!
 '''
+import random
+play = input("Do You Want To Play A Game? (y/n): ")
+bot = ""
+if play == "y":
+  print("Get Best 3/5 To Win")
+while play == "y":
+  pscore = 0
+  bscore = 0
+  while bscore < 3 and pscore < 3 or pscore < 3 and bscore < 3:
+    p1 = input("Rock Paper Scissors!(r,p,s): ")
+    rand = random.randint(1,3)
+    if rand == 1:
+      bot = "r"
+      print("I Chose Rock")
+    elif rand == 2:
+      bot = "p"
+      print("I Chose Paper")
+    elif rand == 3:
+      bot = "s"
+      print("I Chose Scissors")
 
-print("My game is not built yet!")
+    if p1 == "r":
+      if bot == "r":
+        print("Tie")
+      elif bot == "p":
+        print("You Lose")
+        bscore += 1
+      elif bot == "s":
+        print("You Win")
+        pscore += 1
+
+    elif p1 == "p":
+      if bot == "p":
+        print("Tie")
+      elif bot == "s":
+        print("You Lose")
+        bscore += 1
+      elif bot == "r":
+        print("You Win")
+        pscore += 1
+
+    elif p1 == "s":
+      if bot == "s":
+        print("Tie")
+      elif bot == "r":
+        print("You Lose")
+        bscore += 1
+      elif bot == "p":
+        print("You Win")
+        pscore += 1
+    else:
+      print("Invalid Input")
+    print("Your Score:",pscore,"      My Score:",bscore)
+  if bscore >= 3:
+    print("You Lost The Game")
+    play = input("Do You Wanna Play Again (y/n): ")
+  else:
+    print("You Won The Game")
+    play = input("Do You Wanna Play Again (y/n): ")
